@@ -1,3 +1,5 @@
+require "spec_helper"
+
 describe "Purchasing" do
 
   it "able to purchase" do
@@ -14,19 +16,17 @@ describe "Purchasing" do
     #   click_button "Add to Cart"
     # end
 
-    items = page.all("div.item")
+    items = all("div.item")
     first_item = items.first
     first_item.click_button "Add to Cart"
 
-    items = page.all("div.item")
+    items = all("div.item")
     last_item = items.last
     last_item.click_button "Add to Cart"
 
     click_link "View Your Order"
 
     click_button "Checkout"
-
-    binding.pry
 
     within("#new_address") do
       fill_in "First name", :with => "Franklin"
@@ -35,11 +35,18 @@ describe "Purchasing" do
       fill_in "City", :with => "Denver"
       fill_in "State", :with => "CO"
       fill_in "Zipcode", :with => "80220"
-      fill_in "address[email]", :with => "franklin.webber@gmail.com"
+      # fill_in "address[email]", :with => "franklin.webber@gmail.com"
+      # fill_in "Email", :with => "franklin.webber@gmail.com"
+      first("#address_email").set("franklin.webber@gmail.com")
+
       click_button "Use This Billing Address"
     end
 
     click_button "Pay with Card"
+    sleep 30
+
+
+
   end
 
   #
