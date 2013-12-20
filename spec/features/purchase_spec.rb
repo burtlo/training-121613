@@ -2,6 +2,8 @@ require "spec_helper"
 
 describe "Purchasing" do
 
+  let(:user) { fake_user }
+
   it "able to purchase" do
     visit "/"
     # TODO: Change to click any random city
@@ -19,26 +21,20 @@ describe "Purchasing" do
     # end
 
     # TODO: Helper for add a random item to my cart
-    items = all("div.item")
-    first_item = items.first
-    first_item.click_button "Add to Cart"
 
-    items = all("div.item")
-    last_item = items.last
-    last_item.click_button "Add to Cart"
+    random_menu_item.add_to_cart
 
     click_link "View Your Order"
 
     click_button "Checkout"
 
-    # TODO: Can we use random data ?
     within("#new_address") do
-      fill_in "First name", :with => "Franklin"
-      fill_in "Last name", :with => "Webber"
-      fill_in "Street address", :with => "220 Magnolia St"
-      fill_in "City", :with => "Denver"
-      fill_in "State", :with => "CO"
-      fill_in "Zipcode", :with => "80220"
+      fill_in "First name", :with => user.first_name
+      fill_in "Last name", :with => user.last_name
+      fill_in "Street address", :with => user.street_address
+      fill_in "City", :with => user.city
+      fill_in "State", :with => user.state
+      fill_in "Zipcode", :with => user.zip_code
 
       # This is finding the input field next to a label with the name 'Email'
       # fill_in "Email", :with => "franklin.webber@gmail.com"
@@ -47,7 +43,7 @@ describe "Purchasing" do
       # fill_in "address[email]", :with => "franklin.webber@gmail.com"
 
       # This is finding the first item with id 'address_email'
-      first("#address_email").set("franklin.webber@gmail.com")
+      first("#address_email").set(user.email)
 
       click_button "Use This Billing Address"
     end
@@ -56,20 +52,18 @@ describe "Purchasing" do
 
     # TODO: Expectation that an Strip iframe stripe_checkout_app
 
+
     within_frame("stripe_checkout_app") do
 
-      # TODO: credit card - test billing data
-      fill_in "Email", :with => "franklin.webber@gmail.com"
-      fill_in "Card number", :with => "4242424242424242"
-      fill_in "MM / YY", :with => "12/15"
-      fill_in "CVC", :with => "123"
+      fill_in "Email", :with => user.email
+      fill_in "Card number", :with => user.credit_card.number
+      fill_in "MM / YY", :with => user.credit_card.expiration
+      fill_in "CVC", :with => user.credit_card.verification
 
       click_button "Pay"
 
     end
 
-    success_image = first("#order_success")
-    expect(success_image).to(be,"The order successful image does appear on the page")
     # TODO: the purchases, the final cost of order
     expect(page).to have_text("Successfully submitted your order!")
 

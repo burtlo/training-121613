@@ -1,0 +1,1 @@
+require_relative 'have_a_logged_in_nav_bar'
