@@ -5,9 +5,12 @@ require 'faker'
 
 require 'capybara'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 Capybara.run_server = false
-Capybara.default_driver = :selenium
+# Capybara.default_driver = :selenium
+Capybara.default_driver = :poltergeist
+
 Capybara.app_host = 'http://192.241.192.185:3002'
 
 RSpec.configure do |config|

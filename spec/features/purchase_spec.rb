@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "Purchasing" do
+describe "Purchasing", :driver => :selenium do
 
   let(:user) { fake_user }
 
