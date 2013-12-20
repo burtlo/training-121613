@@ -4,7 +4,9 @@ describe "Purchasing" do
 
   it "able to purchase" do
     visit "/"
+    # TODO: Change to click any random city
     click_link "Albuquerque"
+    # TODO: Change to click any random store
     click_link "Ono Burrito10"
 
     #
@@ -16,6 +18,7 @@ describe "Purchasing" do
     #   click_button "Add to Cart"
     # end
 
+    # TODO: Helper for add a random item to my cart
     items = all("div.item")
     first_item = items.first
     first_item.click_button "Add to Cart"
@@ -28,6 +31,7 @@ describe "Purchasing" do
 
     click_button "Checkout"
 
+    # TODO: Can we use random data ?
     within("#new_address") do
       fill_in "First name", :with => "Franklin"
       fill_in "Last name", :with => "Webber"
@@ -50,8 +54,11 @@ describe "Purchasing" do
 
     click_button "Pay with Card"
 
+    # TODO: Expectation that an Strip iframe stripe_checkout_app
+
     within_frame("stripe_checkout_app") do
 
+      # TODO: credit card - test billing data
       fill_in "Email", :with => "franklin.webber@gmail.com"
       fill_in "Card number", :with => "4242424242424242"
       fill_in "MM / YY", :with => "12/15"
@@ -61,8 +68,9 @@ describe "Purchasing" do
 
     end
 
-    binding.pry
-
+    success_image = first("#order_success")
+    expect(success_image).to(be,"The order successful image does appear on the page")
+    # TODO: the purchases, the final cost of order
     expect(page).to have_text("Successfully submitted your order!")
 
   end
