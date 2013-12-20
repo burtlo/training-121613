@@ -8,6 +8,11 @@ require 'capybara/rspec'
 require 'capybara/poltergeist'
 
 Capybara.run_server = false
+
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
 # Capybara.default_driver = :selenium
 Capybara.default_driver = :poltergeist
 
