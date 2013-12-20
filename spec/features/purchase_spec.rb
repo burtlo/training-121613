@@ -35,17 +35,35 @@ describe "Purchasing" do
       fill_in "City", :with => "Denver"
       fill_in "State", :with => "CO"
       fill_in "Zipcode", :with => "80220"
-      # fill_in "address[email]", :with => "franklin.webber@gmail.com"
+
+      # This is finding the input field next to a label with the name 'Email'
       # fill_in "Email", :with => "franklin.webber@gmail.com"
+
+      # This is using the name of the input field
+      # fill_in "address[email]", :with => "franklin.webber@gmail.com"
+
+      # This is finding the first item with id 'address_email'
       first("#address_email").set("franklin.webber@gmail.com")
 
       click_button "Use This Billing Address"
     end
 
     click_button "Pay with Card"
-    sleep 30
 
+    within_frame("stripe_checkout_app") do
 
+      fill_in "Email", :with => "franklin.webber@gmail.com"
+      fill_in "Card number", :with => "4242424242424242"
+      fill_in "MM / YY", :with => "12/15"
+      fill_in "CVC", :with => "123"
+
+      click_button "Pay"
+
+    end
+
+    binding.pry
+
+    expect(page).to have_text("Successfully submitted your order!")
 
   end
 
@@ -69,28 +87,5 @@ describe "Purchasing" do
   #     config.match = :smart
   #   end
   # end
-
-#     # click_button "Pay With Card"
-#     page.all("button")[0].click
-
-#     # This does not work - because it's in an iframe
-#     # fill_in "email", with: "franklin.webber@gmail.com"
-#     # fill_in "Card number", with: "4242424242424242"
-#     # fill_in "MM / YY", with: "1215"
-#     # fill_in "CVC", with: "123"
-
-#     within_frame "stripe_checkout_app" do
-#       fill_in "email", with: "franklin.webber@gmail.com"
-#       fill_in "Card number", with: "4242424242424242"
-#       fill_in "MM / YY", with: "1215"
-#       fill_in "CVC", with: "123"
-#       click_button "Pay"
-#     end
-
-#     expect(page).to have_text("Successfully submitted your order!")
-
-#   end
-
-# end
 
 end
