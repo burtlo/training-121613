@@ -6,7 +6,9 @@ require 'capybara'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 
-require 'helpers/capybara_ext/all'
+# Commented out because it overrides Capybara features
+# that the example tests depend on.
+# require 'helpers/capybara_ext/all'
 require 'helpers/core_ext/all'
 require 'helpers/shared_examples/all'
 require 'helpers/matchers/all'
