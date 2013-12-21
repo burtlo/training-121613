@@ -2,10 +2,17 @@ require 'json'
 require 'nokogiri'
 require 'pry'
 require 'faker'
-
 require 'capybara'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+
+require 'helpers/capybara_ext/all'
+require 'helpers/core_ext/all'
+require 'helpers/shared_examples/all'
+require 'helpers/matchers/all'
+require 'helpers/page_objects/all'
+require 'helpers/models/all'
+require 'helpers/fixtures/all'
 
 Capybara.run_server = false
 
@@ -22,10 +29,3 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers
 end
-
-require 'helpers/shared_examples/all'
-require 'helpers/matchers/all'
-require 'helpers/core_ext/all'
-require 'helpers/page_objects/all'
-require 'helpers/models/all'
-require 'helpers/fixtures/all'
