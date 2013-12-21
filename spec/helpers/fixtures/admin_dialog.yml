@@ -1,0 +1,7 @@
+dialog_close_icon: { css: ".sf-dialog .close" }
+dialog_title_header: { css: " .sf-dialog .sf-dialog-title.modal-header" }
+dialog_delete_confirm_message: { css: ".sf-dialog-content .sf-dialog-inner.modal-body>div" }
+dialog_accept_button: { css: ".sf-dialog-content .sf-dialog-buttons .btn.btn-primary" }
+dialog_cancel_link: { css: ".sf-dialog-content .sf-dialog-buttons .btn.btn-default.sf-dialog-link" }
+dialog_back_button: { css: ".sf-dialog-content .sf-dialog-buttons .btn.btn-primary:nth-child(2)" }
+dialog_finish_button: { css: ".sf-dialog-content .sf-dialog-buttons .btn.btn-primary:nth-child(3)" }

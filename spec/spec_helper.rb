@@ -5,6 +5,7 @@ require 'faker'
 require 'capybara'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
+require 'properties-ruby'
 
 # Commented out because it overrides Capybara features
 # that the example tests depend on.
