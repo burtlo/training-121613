@@ -5,5 +5,7 @@ en:
     account_profile_link: "Account Profile"
     log_out_link: "Log out"
   menu:
+    all:
+      selector: "div.item"
     menuitem:
       add_to_cart: "Add to Cart"

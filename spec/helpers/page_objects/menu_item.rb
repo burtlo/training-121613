@@ -17,15 +17,8 @@ class MenuItem
 end
 
 def all_menu_items
- # raw_menu_items = all("div.item")
- # menu_items = []
- # raw_menu_items.each do |element|
- #   new_menu_item = MenuItem.new(element)
- #   menu_items.push(new_menu_item)
- # end
- # menu_items
-
- all("div.item").map { |element| MenuItem.new(element) }
+  selector = t("menu.all.selector")
+  all(selector).map { |element| MenuItem.new(element) }
 end
 
 def random_menu_item
