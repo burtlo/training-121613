@@ -4,9 +4,9 @@ end
 
 class LoggedInNavBar
   def matches?(page)
-    has_logged_in_text = page.has_text?("Logged in as")
-    has_account_profile_link = page.has_link?("Account Profile")
-    has_log_out_link = page.has_link?("Log out")
+    has_logged_in_text = page.has_text?(logged_in_text)
+    has_account_profile_link = page.has_link?(account_profile_link_text)
+    has_log_out_link = page.has_link?(log_out_link_text)
 
     @error_message = ""
 
@@ -30,7 +30,21 @@ class LoggedInNavBar
   end
 
   def failure_message_for_should_not
-    "Should Not"
+    # TODO: Write a better failure message
+  end
+
+  private
+
+  def logged_in_text
+    t("navbar.logged_in")
+  end
+
+  def account_profile_link_text
+    t("navbar.account_profile_link")
+  end
+
+  def log_out_link_text
+    t("navbar.log_out_link")
   end
 
 end

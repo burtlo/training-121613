@@ -12,7 +12,7 @@ class MenuItem
  end
 
  def text_add_to_cart
-   "Add to Cart"
+   t("menu.menuitem.add_to_cart")
  end
 end
 
