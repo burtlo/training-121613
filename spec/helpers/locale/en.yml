@@ -1,0 +1,9 @@
+---
+en:
+  navbar:
+    logged_in: "Logged in as"
+    account_profile_link: "Account Profile"
+    log_out_link: "Log out"
+  menu:
+    menuitem:
+      add_to_cart: "Add to Cart"

@@ -9,5 +9,6 @@ gem 'poltergeist'
 gem "pry"
 
 gem "faker"
+gem "i18n"
 
 gem "properties-ruby"

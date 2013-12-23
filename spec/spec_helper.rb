@@ -6,10 +6,12 @@ require 'capybara'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'properties-ruby'
+require 'i18n'
 
 # Commented out because it overrides Capybara features
 # that the example tests depend on.
 # require 'helpers/capybara_ext/all'
+require 'helpers/locale/all'
 require 'helpers/core_ext/all'
 require 'helpers/shared_examples/all'
 require 'helpers/matchers/all'
